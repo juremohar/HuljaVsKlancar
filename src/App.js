@@ -1,7 +1,10 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-const huljaId = "9l-yPDfUNtkSPwHddbHJMM6iRUJiv-95de0jHMRSPltQYk4"
+import Countdown from 'react-countdown';
+
+const huljaId = "exYXsQpf35lBjgYsQgCJpE1CnLY8dw93p5x04H6ZLTX2C6UiFX2acF3euA"
 const klancarId = "x7pf45S36YLfn55xpk75WZtvoZ9oZ2YN3uhfbw6CRtT625pb1fS7qrFCHw"
 const secret = "RGAPI-17481b17-b4b9-4a3a-bf13-cb28fbc36044"
 
@@ -9,6 +12,17 @@ async function fetchApiData(id) {
   const response = await fetch('https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + secret);
   return await response.json();
 }
+
+const UrgeWithPleasureComponent = () => (
+  <CountdownCircleTimer
+    isPlaying
+    duration={10000}
+    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+    colorsTime={[7, 5, 2, 0]}
+  >
+    {({ remainingTime }) => remainingTime}
+  </CountdownCircleTimer>
+)
 
 
 function sortObjects(objects) {
@@ -61,12 +75,8 @@ const MyComponent = () => {
     return <p>Loading...</p>
   }
 
-  console.log(klancarData)
-
   let data = sortObjects([klancarData, huljaData]);
-
   let currentLeaderIs = data[0].summonerName
-  console.log(data)
 
   return (
     <div className="container mx-auto">
@@ -120,13 +130,18 @@ const MyComponent = () => {
         </div>
       </div>
 
+      <div className='flex justify-center items-center mb-4'>
+        <h2 className="font-bold p-2">Time left:</h2>
+        <Countdown date={new Date(2024, 0, 3, 0, 0, 0, 0)} />
+      </div>
+
       <div className="flex justify-center mb-4">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => { setShowWinning(!showWinning) }}>
           Who is currently in the lead?
         </button>
       </div>
 
-      {showWinning && currentLeaderIs == "Blesou človk" &&
+      {showWinning && currentLeaderIs == "prytaijo" &&
         <div className="flex flex-col justify-around items-center">
           <h2 className="font-bold p-2">Its hulja!</h2>
           <img src="./hulja.jpeg" className="card-img-top" alt="Pionir" />
