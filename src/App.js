@@ -4,26 +4,14 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 import Countdown from 'react-countdown';
 
-const huljaId = "exYXsQpf35lBjgYsQgCJpE1CnLY8dw93p5x04H6ZLTX2C6UiFX2acF3euA"
-const klancarId = "x7pf45S36YLfn55xpk75WZtvoZ9oZ2YN3uhfbw6CRtT625pb1fS7qrFCHw"
-const secret = "RGAPI-17481b17-b4b9-4a3a-bf13-cb28fbc36044"
+const huljaId = "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA"
+const klancarId = "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng"
+const secret = "RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3"
 
 async function fetchApiData(id) {
   const response = await fetch('https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + id + '?api_key=' + secret);
   return await response.json();
 }
-
-const UrgeWithPleasureComponent = () => (
-  <CountdownCircleTimer
-    isPlaying
-    duration={10000}
-    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-    colorsTime={[7, 5, 2, 0]}
-  >
-    {({ remainingTime }) => remainingTime}
-  </CountdownCircleTimer>
-)
-
 
 function sortObjects(objects) {
   const tierOrder = { DIAMOND: 4, EMERALD: 3, GOLD: 2, SILVER: 1 };
@@ -132,7 +120,7 @@ const MyComponent = () => {
 
       <div className='flex justify-center items-center mb-4'>
         <h2 className="font-bold p-2">Time left:</h2>
-        <Countdown date={new Date(2024, 0, 3, 0, 0, 0, 0)} />
+        <Countdown date={new Date(2024, 0, 10, 0, 0, 0, 0)} />
       </div>
 
       <div className="flex justify-center mb-4">
@@ -167,25 +155,5 @@ function App() {
     );
   }
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           test <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
