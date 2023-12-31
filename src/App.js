@@ -113,7 +113,6 @@ const MyComponent = () => {
           <img
             className="w-[380px] h-[516px]"
             src={getRankImage(klancarData)}
-            alt="Sunset in the mountains"
           />
 
           <div className="flex justify-between items-center px-6 py-4">
@@ -131,11 +130,11 @@ const MyComponent = () => {
                 </span>
               </p>
             </div>
-            <div>
+
+            <div className="w-16 h-16 rounded-full">
               <img
                 className="w-16 h-16 rounded-full"
-                src="https://scontent.flju4-1.fna.fbcdn.net/v/t39.30808-6/261420619_5149674351726442_2866608884541755962_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Tb5FgpL_TJAAX9I6Fe2&_nc_ht=scontent.flju4-1.fna&oh=00_AfCz3wvGEkeBKmkDuVBazD6gupS6pbirsdA1Lp2Wm6xsug&oe=6590948F"
-                alt="Sunset in the mountains"
+                src="./uyo/profilka.png"
               />
             </div>
           </div>
@@ -177,8 +176,7 @@ const MyComponent = () => {
             <div>
               <img
                 className="w-16 h-16 rounded-full"
-                src="https://scontent.flju4-1.fna.fbcdn.net/v/t39.30808-6/274655961_4908160265970802_8342647707832605489_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=vRsuGfGEzhEAX8LtS7L&_nc_ht=scontent.flju4-1.fna&oh=00_AfAePZnh9jyh3bhdeboIZXkklWhz9XhZqCpfgbKa_SUOSQ&oe=6590FCAD"
-                alt="Sunset in the mountains"
+                src="./hulja/profilka.png"
               />
             </div>
           </div>
