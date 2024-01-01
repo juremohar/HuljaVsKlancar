@@ -1,12 +1,17 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Countdown from "react-countdown";
+import MatchHistory from "./components/MatchHistory";
 
 const huljaId = "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA";
 const klancarId = "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng";
 const secret = "RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3";
+const huljaPUUID =
+  "LgTP5g_gBgSeyRRnHredy2d6wZ46nppWv_RquTD7c-wWm-PT-EBJctcnxLuTWOguz5XQreLTsHByFg";
+const klancarPUUID =
+  "9Fj1ZRopnJ5aAJEUq8WFMMaaTyuIRR1bwIieLnolAGzYi0QluyXoHgY9l4k5eIUYbv2qiFD8HBRPXw";
 
-const LP_PER_WIN = 20;
+const LP_PER_WIN = 24;
 
 async function fetchApiData(id) {
   const response = await fetch(
@@ -104,9 +109,12 @@ const MyComponent = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex justify-around items-center mb-10 flex-col sm:flex-row px-4 py-6">
+      <div className="flex justify-around items-center mb-10 flex-col lg:flex-row px-4 py-6">
+        <div className="flex-col place-self-start space-y-1 order-2 max-w-sm m-auto w-full flex py-2 lg:py-0 lg:px-2 lg:m-0 lg:order-1 lg:w-80">
+          <MatchHistory userPUUID={klancarPUUID} />
+        </div>
         <div
-          className={`max-w-sm rounded overflow-hidden shadow-lg ${
+          className={`max-w-sm rounded overflow-hidden shadow-lg order-1 lg:order-2 ${
             isUyoAhead(rankDifResult) ? "bg-green-100" : "bg-red-100"
           }`}
         >
@@ -148,9 +156,9 @@ const MyComponent = () => {
             </span>
           </div>
         </div>
-        <div className="py-5">VS</div>
+        <div className="py-5 order-3">VS</div>
         <div
-          className={`max-w-sm rounded overflow-hidden shadow-lg ${
+          className={`max-w-sm rounded overflow-hidden shadow-lg order-4 ${
             !isUyoAhead(rankDifResult) ? "bg-green-100" : "bg-red-100"
           }`}
         >
@@ -191,6 +199,9 @@ const MyComponent = () => {
               #npc
             </span>
           </div>
+        </div>
+        <div className="flex-col place-self-start space-y-1 order-5 max-w-sm m-auto w-full flex py-2 lg:py-0 lg:px-2 lg:m-0 lg:w-80">
+          <MatchHistory userPUUID={huljaPUUID} />
         </div>
       </div>
 
