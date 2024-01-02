@@ -7,9 +7,9 @@ const huljaId = "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA";
 const klancarId = "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng";
 const secret = "RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3";
 const huljaPUUID =
-  "LgTP5g_gBgSeyRRnHredy2d6wZ46nppWv_RquTD7c-wWm-PT-EBJctcnxLuTWOguz5XQreLTsHByFg";
+  "8Blt358BdVCUPZrtBRuUxpV13W5K-46YTWrM3oosyE6yqvWUYtJzartepXcvkxf9G-x14kHPQxfx5Q";
 const klancarPUUID =
-  "9Fj1ZRopnJ5aAJEUq8WFMMaaTyuIRR1bwIieLnolAGzYi0QluyXoHgY9l4k5eIUYbv2qiFD8HBRPXw";
+  "40HL-EeJhwe0xoa84TBfidvDvSab8va_-nhcezP88nbuFOg1Tz1HRiZnJPkOe-unJO8gKXTbce0sPw";
 
 const LP_PER_WIN = 24;
 
