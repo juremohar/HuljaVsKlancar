@@ -219,7 +219,7 @@ const MyComponent = () => {
             {rankDifResult.leadingPlayer.name}
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            approximately {rankDifResult.winsDifference} games ahead
+            approximately {rankDifResult.winsDifference} wins ahead
           </p>
         </div>
 
