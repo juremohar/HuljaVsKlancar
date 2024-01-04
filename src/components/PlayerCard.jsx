@@ -26,7 +26,10 @@ function PlayerCard({ player, isUyoAhead, badges }) {
         isUyoAhead ? "bg-emerald-600" : "bg-red-500"
       }`}
     >
-      <img className="w-[380px] h-[516px]" src={getRankImage(player)} />
+      <img
+        className="w-[380px] h-[516px] rounded-t"
+        src={getRankImage(player)}
+      />
 
       <div className="w-full flex justify-between items-center px-6 py-4">
         <div>
