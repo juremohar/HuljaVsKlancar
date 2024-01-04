@@ -37,11 +37,11 @@ const calculateLP = (player) => {
     PLATINUM: 3,
     GOLD: 2,
     SILVER: 1,
+    BRONZE: 0,
   };
 
   return (
-    tierValues[player.tier] * 1000 +
-    rankValues[player.rank] * 100 +
+    (tierValues[player.tier] * 4 + rankValues[player.rank]) * 100 +
     player.leaguePoints
   );
 };
