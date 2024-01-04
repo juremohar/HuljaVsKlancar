@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <div className="bg-slate-950">
+  <div className="bg-slate-950 px-8">
     <React.StrictMode>
       <App />
     </React.StrictMode>
