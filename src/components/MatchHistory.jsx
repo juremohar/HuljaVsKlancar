@@ -4,7 +4,7 @@ import MatchHistoryCard from "./MatchHistoryCard";
 async function fetchMatchHistory(id, retries = 3, delay = 1000) {
   try {
     const response = await fetch(
-      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${id}/ids?queue=420&type=ranked&start=0&count=5&api_key=RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3`
+      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${id}/ids?queue=420&type=ranked&start=0&count=6&api_key=RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3`
     );
 
     if (response.status === 429 && retries > 0) {
