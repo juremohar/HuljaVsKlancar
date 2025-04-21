@@ -80,7 +80,7 @@ const MyComponent = () => {
       setKlancarData(() => {
         return {
           ...r1.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: klancarRiotId.gameName + "#" + klancarRiotId.tagLine,
+          name: klancarRiotId?.gameName + "#" + klancarRiotId?.tagLine,
           profilePic: "./uyo/profilka.png",
         };
       });
@@ -89,7 +89,7 @@ const MyComponent = () => {
       setHuljaData(() => {
         return {
           ...r2.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: huljaRiotId.gameName + "#" + huljaRiotId.tagLine,
+          name: huljaRiotId?.gameName + "#" + huljaRiotId?.tagLine,
           profilePic: "./hulja/profilka.png",
         };
       });
