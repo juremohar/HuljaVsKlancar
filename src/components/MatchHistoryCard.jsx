@@ -101,12 +101,11 @@ function MatchHistoryCard({ matchId, userPUUID }) {
     <div
       className={`w-full flex space-x-5 items-center py-2 rounded px-4 ${
         findPlayer?.win ? "bg-blue-600/80" : "bg-red-700/80"
-      }`}
-    >
+      }`}>
       <div className="flex flex-col space-y-3">
         <img
           className="w-14 h-12 rounded"
-          src={`https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${findPlayer?.championName}.png`}
+          src={`https://ddragon.leagueoflegends.com/cdn/15.8.1/img/champion/${findPlayer?.championName}.png`}
         />
         <div className="text-sm text-slate-200">
           <div>{findPlayer?.win ? "Victory" : "Defeat"}</div>
@@ -149,7 +148,7 @@ function MatchHistoryCard({ matchId, userPUUID }) {
               <div key={item}>
                 <img
                   className="w-8 h-7 rounded"
-                  src={`https://ddragon.leagueoflegends.com/cdn/13.24.1/img/item/${item}.png`}
+                  src={`https://ddragon.leagueoflegends.com/cdn/15.8.1/img/item/${item}.png`}
                 />
               </div>
             ) : (

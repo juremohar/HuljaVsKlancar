@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Countdown from "react-countdown";
 import MatchHistory from "./components/MatchHistory";
 import PlayerCard from "./components/PlayerCard";
 
@@ -13,6 +12,13 @@ const klancarPUUID =
   "40HL-EeJhwe0xoa84TBfidvDvSab8va_-nhcezP88nbuFOg1Tz1HRiZnJPkOe-unJO8gKXTbce0sPw";
 
 const LP_PER_WIN = 24;
+
+async function fetchRiotId(puuid) {
+  const response = await fetch(
+    `https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/${puuid}?api_key=${secret}`
+  );
+  return await response.json();
+}
 
 async function fetchApiData(id) {
   const response = await fetch(
@@ -65,6 +71,8 @@ const MyComponent = () => {
   const [loading, setLoading] = useState(true);
   const [klancarData, setKlancarData] = useState(null);
   const [huljaData, setHuljaData] = useState(null);
+  const [klancarRiotId, setKlancarRiotId] = useState(null);
+  const [huljaRiotId, setHuljaRiotId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +80,7 @@ const MyComponent = () => {
       setKlancarData(() => {
         return {
           ...r1.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: "Matevž Klančar",
+          name: klancarRiotId.gameName + "#" + klancarRiotId.tagLine,
           profilePic: "./uyo/profilka.png",
         };
       });
@@ -81,10 +89,16 @@ const MyComponent = () => {
       setHuljaData(() => {
         return {
           ...r2.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: "Luka Grm",
+          name: huljaRiotId.gameName + "#" + huljaRiotId.tagLine,
           profilePic: "./hulja/profilka.png",
         };
       });
+
+      const klancarRiotIdData = await fetchRiotId(klancarPUUID);
+      setKlancarRiotId(klancarRiotIdData);
+
+      const huljaRiotIdData = await fetchRiotId(huljaPUUID);
+      setHuljaRiotId(huljaRiotIdData);
 
       setLoading(false);
     };
@@ -127,8 +141,7 @@ const MyComponent = () => {
     <div className="relative isolate py-4 text-white">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div
           className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-emerald-500 to-sky-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style={{
@@ -167,11 +180,6 @@ const MyComponent = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center py-8 text-2xl">
-          <h2 className="font-bold p-2">Time left:</h2>
-          <Countdown date={new Date(2024, 0, 10, 0, 0, 0, 0)} />
-        </div>
-
         <div className="px-6 py-12 md:py-36">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-base font-semibold leading-7 text-indigo-400">
@@ -200,8 +208,7 @@ const MyComponent = () => {
 
       <div
         className="hidden lg:block absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-1000px)]"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <div
           className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-sky-500 to-emerald-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
           style={{

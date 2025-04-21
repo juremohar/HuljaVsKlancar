@@ -2,11 +2,18 @@ import React from "react";
 
 function PlayerCard({ player, isUyoAhead, badges }) {
   const getRankImage = (player) => {
-    if (player.summonerName === "utvryis") {
+    console.log(player);
+    if (
+      player.summonerId ===
+      "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng"
+    ) {
       const imagePath = `./uyo/uyo_rank${player.rank}.png`;
 
       return imagePath;
-    } else if (player.summonerName === "prytaijo") {
+    } else if (
+      player.summonerId ===
+      "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA"
+    ) {
       const imagePath = `./hulja/hulja_rank${player.rank}.png`;
 
       return imagePath;
@@ -24,8 +31,7 @@ function PlayerCard({ player, isUyoAhead, badges }) {
     <div
       className={`max-w-sm text-white rounded shadow-lg order-1 lg:order-2 ${
         isUyoAhead ? "bg-emerald-600" : "bg-red-500"
-      }`}
-    >
+      }`}>
       <img
         className="w-[380px] h-[516px] rounded-t"
         src={getRankImage(player)}
