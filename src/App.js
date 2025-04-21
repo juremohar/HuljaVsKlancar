@@ -75,12 +75,26 @@ const MyComponent = () => {
   const [huljaRiotId, setHuljaRiotId] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchRiotIds = async () => {
+      const klancarRiotIdData = await fetchRiotId(klancarPUUID);
+      setKlancarRiotId(klancarRiotIdData);
+
+      const huljaRiotIdData = await fetchRiotId(huljaPUUID);
+      setHuljaRiotId(huljaRiotIdData);
+    };
+
+    fetchRiotIds();
+  }, []);
+
+  useEffect(() => {
+    const fetchLeagueData = async () => {
       const r1 = await fetchApiData(klancarId);
       setKlancarData(() => {
         return {
           ...r1.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: klancarRiotId?.gameName + "#" + klancarRiotId?.tagLine,
+          name: klancarRiotId
+            ? `${klancarRiotId.gameName}#${klancarRiotId.tagLine}`
+            : "Matevž Klančar",
           profilePic: "./uyo/profilka.png",
         };
       });
@@ -89,22 +103,18 @@ const MyComponent = () => {
       setHuljaData(() => {
         return {
           ...r2.find((x) => x.queueType == "RANKED_SOLO_5x5"),
-          name: huljaRiotId?.gameName + "#" + huljaRiotId?.tagLine,
+          name: huljaRiotId
+            ? `${huljaRiotId.gameName}#${huljaRiotId.tagLine}`
+            : "Luka Grm",
           profilePic: "./hulja/profilka.png",
         };
       });
 
-      const klancarRiotIdData = await fetchRiotId(klancarPUUID);
-      setKlancarRiotId(klancarRiotIdData);
-
-      const huljaRiotIdData = await fetchRiotId(huljaPUUID);
-      setHuljaRiotId(huljaRiotIdData);
-
       setLoading(false);
     };
 
-    fetchData();
-  }, []);
+    fetchLeagueData();
+  }, [klancarRiotId, huljaRiotId]);
 
   if (loading) {
     return <p>Loading...</p>;
