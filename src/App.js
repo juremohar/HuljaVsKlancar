@@ -64,8 +64,9 @@ const calculateRankDifference = (player1, player2) => {
   };
 };
 
-const isUyoAhead = (rankDifResult) =>
-  rankDifResult.leadingPlayer.summonerName === "utvryis";
+const isUyoAhead = (rankDifResult) => {
+  return rankDifResult.leadingPlayer.summonerId === klancarId;
+};
 
 const MyComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -125,7 +126,7 @@ const MyComponent = () => {
   const uyoBadges = (
     <div className="px-6 pt-4 pb-2">
       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-        #midgap
+        #boomer
       </span>
       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
         #fizzenjoyer &#128011;

@@ -32,10 +32,12 @@ function PlayerCard({ player, isUyoAhead, badges }) {
       className={`max-w-sm text-white rounded shadow-lg order-1 lg:order-2 ${
         isUyoAhead ? "bg-emerald-600" : "bg-red-500"
       }`}>
-      <img
-        className="w-[380px] h-[516px] rounded-t"
-        src={getRankImage(player)}
-      />
+      <div className="flex justify-center">
+        <img
+          className="w-[380px] h-[516px] rounded-t"
+          src={getRankImage(player)}
+        />
+      </div>
 
       <div className="w-full flex justify-between items-center px-6 py-4">
         <div>
@@ -53,8 +55,11 @@ function PlayerCard({ player, isUyoAhead, badges }) {
           </p>
         </div>
 
-        <div className="w-16 h-16 rounded-full">
-          <img className="w-16 h-16 rounded-full" src={player.profilePic} />
+        <div className="flex justify-center items-center">
+          <img
+            className="w-20 h-20 rounded-full object-fill"
+            src={player.profilePic}
+          />
         </div>
       </div>
 
