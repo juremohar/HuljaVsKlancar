@@ -4,7 +4,7 @@ import MatchHistoryCard from "./MatchHistoryCard";
 async function fetchMatchHistory(id, retries = 3, delay = 1000) {
   try {
     const response = await fetch(
-      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${id}/ids?queue=420&type=ranked&start=0&count=6&api_key=RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3`
+      `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${id}/ids?queue=420&type=ranked&start=0&count=6&api_key=RGAPI-bb166ea2-f96d-4ea8-9851-1f9e4a031fd0`
     );
 
     if (response.status === 429 && retries > 0) {
@@ -19,13 +19,13 @@ async function fetchMatchHistory(id, retries = 3, delay = 1000) {
   }
 }
 
-function MatchHistory({ userPUUID }) {
+function MatchHistory({ userNewPUUID, userOldPUUID }) {
   const [loading, setLoading] = useState(true);
   const [usersHistory, setUserHistory] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setUserHistory(await fetchMatchHistory(userPUUID));
+      setUserHistory(await fetchMatchHistory(userNewPUUID));
 
       setLoading(false);
     };
@@ -37,8 +37,8 @@ function MatchHistory({ userPUUID }) {
     return <p>Loading...</p>;
   }
 
-  return usersHistory?.map((matchId) => (
-    <MatchHistoryCard matchId={matchId} userPUUID={userPUUID} key={matchId} />
+  return usersHistory?.map((matchId, i) => (
+    <MatchHistoryCard matchId={matchId} userPUUID={userOldPUUID} key={i} />
   ));
 }
 

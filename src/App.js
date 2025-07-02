@@ -3,12 +3,17 @@ import React, { useState, useEffect } from "react";
 import MatchHistory from "./components/MatchHistory";
 import PlayerCard from "./components/PlayerCard";
 
-const huljaId = "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA";
-const klancarId = "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng";
-const secret = "RGAPI-dcad6322-ebb7-44ca-b770-670dd49fb9f3";
+const huljaId = "5A5SjVdCxy6ZQfVOTD3UDvjRL9BIMIucOw2WUrPC6fV6ex3P7NVvcJaRJg";
+const klancarId = "OtWo2_PcBVU-YrOzJFeSiMO-NBQmMLIFXfT3H91GoFqshNzrgh98tiX4kQ";
+const secret = "RGAPI-bb166ea2-f96d-4ea8-9851-1f9e4a031fd0";
 const huljaPUUID =
-  "8Blt358BdVCUPZrtBRuUxpV13W5K-46YTWrM3oosyE6yqvWUYtJzartepXcvkxf9G-x14kHPQxfx5Q";
+  "GvC4sUtRfqJYjGq3kaj7SW7K6tPAcPBJF28z1Gw3N5iFEwkZ3dP2_zpxyZIIjfJi-6Eq-Pjo4EQW-w";
 const klancarPUUID =
+  "al7a-D45pIofNJWAkSqRr_KCd0gP2aNZQm56GUsmHL9zA-2Xzzg3w332qgB9dSiEJLHlOWK--XFMSQ";
+
+const huljaOldPUUID =
+  "8Blt358BdVCUPZrtBRuUxpV13W5K-46YTWrM3oosyE6yqvWUYtJzartepXcvkxf9G-x14kHPQxfx5Q";
+const klancarOldPUUID =
   "40HL-EeJhwe0xoa84TBfidvDvSab8va_-nhcezP88nbuFOg1Tz1HRiZnJPkOe-unJO8gKXTbce0sPw";
 
 const LP_PER_WIN = 24;
@@ -20,10 +25,10 @@ async function fetchRiotId(puuid) {
   return await response.json();
 }
 
-async function fetchApiData(id) {
+async function fetchApiData(uuid) {
   const response = await fetch(
-    "https://eun1.api.riotgames.com/lol/league/v4/entries/by-summoner/" +
-      id +
+    "https://eun1.api.riotgames.com/lol/league/v4/entries/by-puuid/" +
+      uuid +
       "?api_key=" +
       secret
   );
@@ -89,7 +94,7 @@ const MyComponent = () => {
 
   useEffect(() => {
     const fetchLeagueData = async () => {
-      const r1 = await fetchApiData(klancarId);
+      const r1 = await fetchApiData(klancarPUUID);
       setKlancarData(() => {
         return {
           ...r1.find((x) => x.queueType == "RANKED_SOLO_5x5"),
@@ -100,7 +105,7 @@ const MyComponent = () => {
         };
       });
 
-      const r2 = await fetchApiData(huljaId);
+      const r2 = await fetchApiData(huljaPUUID);
       setHuljaData(() => {
         return {
           ...r2.find((x) => x.queueType == "RANKED_SOLO_5x5"),
@@ -165,7 +170,10 @@ const MyComponent = () => {
       <div className="container mx-auto">
         <div className="flex justify-around items-center mb-10 flex-col lg:flex-row lg:space-x-4">
           <div className="flex-col place-self-start space-y-1 order-2 max-w-sm m-auto w-full flex py-2 lg:py-0 lg:px-2 lg:m-0 lg:order-1 lg:w-80">
-            <MatchHistory userPUUID={klancarPUUID} />
+            <MatchHistory
+              userNewPUUID={klancarPUUID}
+              userOldPUUID={klancarOldPUUID}
+            />
           </div>
 
           <div className="order-1 lg:order-2">
@@ -187,7 +195,10 @@ const MyComponent = () => {
           </div>
 
           <div className="flex-col place-self-start space-y-1 order-5 max-w-sm m-auto w-full flex py-2 lg:py-0 lg:px-2 lg:m-0 lg:w-80">
-            <MatchHistory userPUUID={huljaPUUID} />
+            <MatchHistory
+              userNewPUUID={huljaPUUID}
+              userOldPUUID={huljaOldPUUID}
+            />
           </div>
         </div>
 

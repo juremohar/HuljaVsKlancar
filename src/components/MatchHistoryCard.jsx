@@ -42,20 +42,20 @@ function MatchHistoryCard({ matchId, userPUUID }) {
 
   const getBadge = (player) => {
     if (
-      player.doubleKills ||
-      player.tripleKills ||
-      player.quadraKills ||
-      player.pentaKills
+      player?.doubleKills ||
+      player?.tripleKills ||
+      player?.quadraKills ||
+      player?.pentaKills
     ) {
       let killText = "";
 
-      if (player.pentaKills) {
+      if (player?.pentaKills) {
         killText = "Penta Kill";
-      } else if (player.quadraKills) {
+      } else if (player?.quadraKills) {
         killText = "Quadra Kill";
-      } else if (player.tripleKills) {
+      } else if (player?.tripleKills) {
         killText = "Triple Kill";
-      } else if (player.doubleKills) {
+      } else if (player?.doubleKills) {
         killText = "Double Kill";
       }
 
@@ -66,7 +66,7 @@ function MatchHistoryCard({ matchId, userPUUID }) {
       );
     }
 
-    if (player.challenges.soloKills) {
+    if (player?.challenges?.soloKills) {
       return (
         <span className="inline-flex items-center rounded-md bg-indigo-500 px-1.5 py-1 text-xs font-medium text-slate-200 ring-1 ring-inset ring-pink-400/20">
           SOLO BOLO
@@ -143,9 +143,9 @@ function MatchHistoryCard({ matchId, userPUUID }) {
           {findPlayer?.challenges.kda.toFixed(2)} KDA
         </div>
         <div className="flex space-x-1">
-          {itemsArray.map((item) =>
+          {itemsArray.map((item, i) =>
             item ? (
-              <div key={item}>
+              <div key={i}>
                 <img
                   className="w-8 h-7 rounded"
                   src={`https://ddragon.leagueoflegends.com/cdn/15.8.1/img/item/${item}.png`}

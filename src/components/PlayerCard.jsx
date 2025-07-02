@@ -2,17 +2,16 @@ import React from "react";
 
 function PlayerCard({ player, isUyoAhead, badges }) {
   const getRankImage = (player) => {
-    console.log(player);
     if (
       player.summonerId ===
-      "NgCTXsGabUC1EhI22vTsKran3viNVf-Escikl-T4m3q9D9qh6H9sKqGkng"
+      "OtWo2_PcBVU-YrOzJFeSiMO-NBQmMLIFXfT3H91GoFqshNzrgh98tiX4kQ"
     ) {
       const imagePath = `./uyo/uyo_rank${player.rank}.png`;
 
       return imagePath;
     } else if (
       player.summonerId ===
-      "exstIThz-0IskkMxv5xjFz9Vh7aWOEu2tkwGlc1Y6oVCgleGd8eCNCS9kA"
+      "5A5SjVdCxy6ZQfVOTD3UDvjRL9BIMIucOw2WUrPC6fV6ex3P7NVvcJaRJg"
     ) {
       const imagePath = `./hulja/hulja_rank${player.rank}.png`;
 
